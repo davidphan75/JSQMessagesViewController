@@ -17,15 +17,16 @@
 //
 
 #import "JSQMessagesToolbarContentView.h"
-
 #import "UIView+JSQMessages.h"
+#import "ImageCollectionViewCell.h"
 
 const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 
 
-@interface JSQMessagesToolbarContentView ()
+@interface JSQMessagesToolbarContentView () <UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet JSQMessagesComposerTextView *textView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UIView *leftBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftBarButtonContainerViewWidthConstraint;
@@ -35,6 +36,7 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftHorizontalSpacingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightHorizontalSpacingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
 
 @end
 
@@ -57,11 +59,36 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     [super awakeFromNib];
 
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-
+    
+    self.collectionViewHeightConstraint.constant = 80.0f;
     self.leftHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault;
     self.rightHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault;
+    
+    _images = [[NSMutableArray alloc]init];
+    _collectionView.dataSource = self;
+    [_collectionView registerNib:[UINib nibWithNibName:@"UICollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [_collectionView reloadData];
 
     self.backgroundColor = [UIColor clearColor];
+}
+
+#pragma mark - UICollectionView
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ImageCollectionViewCell *cell = (ImageCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+
+    if ([_images count] > 0) {
+        [cell.imageView setImage:_images[0]];
+    }
+    [cell setBackgroundColor:[UIColor blueColor]];
+    
+    return cell;
 }
 
 #pragma mark - Setters

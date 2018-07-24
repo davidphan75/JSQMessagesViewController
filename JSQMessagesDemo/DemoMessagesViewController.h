@@ -41,6 +41,9 @@
 
 @property (strong, nonatomic) DemoModelData *demoData;
 
+- (void)showGallery;
+- (void)showCamera;
+
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender;
 
 - (void)closePressed:(UIBarButtonItem *)sender;

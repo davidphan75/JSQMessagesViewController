@@ -113,10 +113,10 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet JSQMessagesInputToolbar *inputToolbar;
 
-@property (nonatomic) NSLayoutConstraint *toolbarHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *toolbarHeightConstraint;
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
-
+- (void)setHeight:(CGFloat)height;
 @end
 
 
@@ -221,6 +221,12 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 {
     _additionalContentInset = additionalContentInset;
     [self jsq_updateCollectionViewInsets];
+}
+
+- (void)setHeight:(CGFloat)height
+{
+    self.toolbarHeightConstraint.constant = height;
+    [self.view setNeedsLayout];
 }
 
 #pragma mark - View lifecycle
