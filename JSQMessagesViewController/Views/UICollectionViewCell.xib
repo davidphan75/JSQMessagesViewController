@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZhC-VC-UWf" customClass="ImageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="65" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="65" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applewatch.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7o7-0t-P3s">
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="a0e-2a-DdQ"/>
+                            <constraint firstAttribute="height" constant="80" id="eSk-ZF-N7L"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="7o7-0t-P3s" firstAttribute="leading" secondItem="ZhC-VC-UWf" secondAttribute="leading" id="bN0-I3-Jpj"/>
+                <constraint firstItem="7o7-0t-P3s" firstAttribute="top" secondItem="ZhC-VC-UWf" secondAttribute="top" id="zCD-T5-xkN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="aWT-TJ-vGR"/>
+            <size key="customSize" width="64" height="80"/>
+            <connections>
+                <outlet property="imageView" destination="7o7-0t-P3s" id="YSW-rp-f67"/>
+            </connections>
+            <point key="canvasLocation" x="3.5" y="0.0"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="applewatch.jpg" width="750" height="422"/>
+    </resources>
+</document>

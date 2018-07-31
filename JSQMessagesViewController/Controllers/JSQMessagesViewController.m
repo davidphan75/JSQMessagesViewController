@@ -116,7 +116,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (nonatomic) NSLayoutConstraint *toolbarHeightConstraint;
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
-
 @end
 
 

@@ -41,6 +41,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  */
 @property (weak, nonatomic, readonly, nullable) JSQMessagesComposerTextView *textView;
 
+
+@property (weak, nonatomic, readonly, nullable) UICollectionView *collectionView;
+@property (weak, nonatomic, readonly, nullable) NSLayoutConstraint *collectionViewHeightConstraint;
+@property (strong, nonatomic, nullable) NSMutableArray *images;
 /**
  *  A custom button item displayed on the left of the toolbar content view.
  *

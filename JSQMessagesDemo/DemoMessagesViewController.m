@@ -83,6 +83,36 @@
      */
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
 
+    
+    float height = self.inputToolbar.contentView.leftBarButtonContainerView.frame.size.height;
+    UIImage *image = [UIImage imageNamed:@"photo-camera"];
+    UIButton* cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cameraButton setImage:image forState:UIControlStateNormal];
+    [cameraButton addTarget:self action:@selector(showCamera) forControlEvents:UIControlEventTouchUpInside];
+    [cameraButton setFrame:CGRectMake(0, 0, 25, height)];
+    
+    image = [UIImage imageNamed:@"gallery"];
+    UIButton* galleryButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [galleryButton setImage:image forState:UIControlStateNormal];
+    [galleryButton addTarget:self action:@selector(showGallery) forControlEvents:UIControlEventTouchUpInside];
+    [galleryButton setFrame:CGRectMake(30, 0, 25, height)];
+    
+    self.inputToolbar.preferredDefaultHeight = 200.0f;
+    self.inputToolbar.contentView.leftBarButtonItemWidth = 55;
+    self.inputToolbar.contentView.rightBarButtonItemWidth = 30;
+    [self.inputToolbar.contentView.leftBarButtonContainerView addSubview:cameraButton];
+    [self.inputToolbar.contentView.leftBarButtonContainerView addSubview:galleryButton];
+    [self.inputToolbar.contentView.rightBarButtonItem setImage:[UIImage imageNamed:@"sendButton"] forState:UIControlStateNormal];
+    [self.inputToolbar.contentView.rightBarButtonItem setTitle:@"" forState:UIControlStateNormal];
+    self.inputToolbar.contentView.leftBarButtonItem.hidden = YES;
+    
+    
+    UIImage *image2 = [UIImage imageNamed:@"goldengate"];
+    NSMutableArray *imgs = [[NSMutableArray alloc] init];
+    [imgs addObject:image2];
+    
+    self.inputToolbar.contentView.images = imgs;
+    [self.inputToolbar.contentView.collectionView reloadData];
     /**
      *  Customize your toolbar buttons
      *
@@ -95,6 +125,18 @@
      *
      *  self.inputToolbar.maximumHeight = 150;
      */
+}
+
+- (void)showGallery
+{
+    [self.inputToolbar.contentView.collectionViewHeightConstraint setConstant:0.0f];
+    [self.inputToolbar.contentView updateConstraintsIfNeeded];
+}
+
+- (void)showCamera
+{
+    [self.inputToolbar.contentView.collectionViewHeightConstraint setConstant:80.0f];
+    [self.inputToolbar.contentView updateConstraintsIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated
